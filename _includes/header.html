@@ -67,7 +67,7 @@ button1.addEventListener("click",handleImage,false);
 function handleImage(e){
 	//condition 
 if(imageFile.files[0]==null){
-alert("please enter the image first");
+alert("PLEASE ENTER THE IMAGE FIRST");
 }
 else{
 //looping
@@ -86,7 +86,7 @@ var height = doc.internal.pageSize.height;
 var h1=110;
 doc.addImage(image,"PNG",14,40,width,(height-h1));
 doc.addPage();
-//download
+console.log("IMAGE UPLOADED");
 }
 image.src=event.target.result;
 } 
@@ -100,7 +100,7 @@ reader.readAsDataURL(imageFile.files[j]);
 button.onclick=hello;
 function hello(){
 if(imageFile.files[0]==null){
-	alert("please add an image and then upload it"); 
+	alert("PLEASE FIRST ADD IMAGE THEN UPLOAD IMAGE"); 
 }
 else{
 doc.save("ptpdfconverter");
