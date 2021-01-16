@@ -103,16 +103,7 @@ if(imageFile.files[0]==null){
 	alert("PLEASE FIRST ADD IMAGE THEN UPLOAD IMAGE"); 
 }
 else{
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
-{
-     var blob = doc.output();
-     window.open(URL.createObjectURL(blob));
-}
-else
-{
-doc.save("ptpdfconverter");
-location.reload();
-}
+window.open(doc.output("bloburl"), "_blank");
 }
 }
 
