@@ -104,12 +104,12 @@ if(imageFile.files[0]==null){
 }
 else{
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-window.open(doc.output("bloburl"), "_blank");
+ var blob = doc.output();
+     window.open(URL.createObjectURL(blob));
 }
 else {
-doc.save("hello world");
+doc.save("ptpdf.pd");
 }
-
 }
 }
 </script>
