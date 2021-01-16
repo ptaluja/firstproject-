@@ -86,12 +86,12 @@ var height = doc.internal.pageSize.height;
 var h1=110;
 doc.addImage(image,"PNG",14,40,width,(height-h1));
 doc.addPage();
-alert("IMAGE UPLOADED");
 }
 image.src=event.target.result;
 } 
 reader.readAsDataURL(imageFile.files[j]);
 }
+alert("IMAGE UPLOADED");
 }
 }
 
