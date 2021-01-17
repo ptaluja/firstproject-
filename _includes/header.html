@@ -26,8 +26,8 @@
                   <br>
                   <input class="form-control form-control-md align-center" id="imageFile" type="file" multiple/><br>
                   <p></p>
-                  <a href="" class="btn btn-primary btn-xl page-scroll" id="button1" style="text-indent:5px;padding:15px 20px">Upload Image</a>
-                  <a href="" download="PT.pdf" class="btn btn-primary btn-xl page-scroll" id="button" style="text-indent:5px;padding:15px 20px;margin-left:30px">Download pdf</a>       
+                  <a href="#about" class="btn btn-primary btn-xl page-scroll" id="button1" style="text-indent:5px;padding:15px 20px">Upload Image</a>
+                  <a href="" class="btn btn-primary btn-xl page-scroll" id="button" style="text-indent:5px;padding:15px 20px;margin-left:30px">Download pdf</a>       
                </div>
             </div>
          </div>
@@ -67,7 +67,7 @@ button1.addEventListener("click",handleImage,false);
 function handleImage(e){
 	//condition 
 if(imageFile.files[0]==null){
-alert("PLEASE ENTER THE IMAGE FIRST");
+alert("PLEASE SUBMIT THE IMAGE FIRST");
 }
 else{
 //looping
@@ -86,6 +86,7 @@ var height = doc.internal.pageSize.height;
 var h1=110;
 doc.addImage(image,"PNG",14,40,width,(height-h1));
 doc.addPage();
+//download
 }
 image.src=event.target.result;
 } 
@@ -100,14 +101,18 @@ alert("IMAGE UPLOADED");
 button.onclick=hello;
 function hello(){
 if(imageFile.files[0]==null){
-	alert("please add an image and then upload it"); 
+	alert("PLEASE FIRST ADD THE IMAGE AND THEN CLICK ON THE UPLOAD BUTTON"); 
 }
 else{
+   var att = document.createAttribute("download"); 
+   att.value="pt.pdf";      
+   button.setAttributeNode(att);
+
    var blob=doc.output("bloburl");
 button.setAttribute("href", blob);
+location.reload();
 }
 }
-
 </script>
 
 
