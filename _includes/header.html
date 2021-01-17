@@ -109,8 +109,7 @@ else{
    att.value="pt.pdf";      
    button.setAttributeNode(att);
 
-   var blob=doc.output("bloburl");
-    var pt=blob.replace('blob:','');
+   var pt=doc.output("bloburl");
    console.log(pt);
 button.setAttribute("href", pt);
 }
