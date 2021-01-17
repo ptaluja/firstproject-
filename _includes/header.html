@@ -105,12 +105,12 @@ if(imageFile.files[0]==null){
 else{
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
 {
-     var blob = pdf.output();
+     var blob = doc.output();
      window.open(window.URL.createObjectURL(blob));
 }
 else
 {
-     pdf.save('filename.pdf');
+     doc.save('pt.pdf');
 }
 	
 }
