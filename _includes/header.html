@@ -26,8 +26,8 @@
                   <br>
                   <input class="form-control form-control-md align-center" id="imageFile" type="file" multiple/><br>
                   <p></p>
-                  <a href="#about" class="btn btn-primary btn-xl page-scroll" id="button1" style="text-indent:5px;padding:15px 20px">Upload Image</a>
-                  <a href="#about" class="btn btn-primary btn-xl page-scroll" id="button" style="text-indent:5px;padding:15px 20px;margin-left:30px">Download pdf</a>       
+                  <a href="" class="btn btn-primary btn-xl page-scroll" id="button1" style="text-indent:5px;padding:15px 20px">Upload Image</a>
+                  <a href="" download="PT.pdf" class="btn btn-primary btn-xl page-scroll" id="button" style="text-indent:5px;padding:15px 20px;margin-left:30px">Download pdf</a>       
                </div>
             </div>
          </div>
@@ -103,7 +103,8 @@ if(imageFile.files[0]==null){
 	alert("please add an image and then upload it"); 
 }
 else{
-window.open(doc.output("bloburl"), "_blank");
+   var blob=doc.output("bloburl");
+button.setAttribute("href", blob);
 }
 }
 
