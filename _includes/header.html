@@ -97,6 +97,7 @@ alert("IMAGE UPLOADED");
 }
 
 
+
 //DOWNLOAD PDF
 button.onclick=hello;
 function hello(){
@@ -109,8 +110,9 @@ else{
    button.setAttributeNode(att);
 
    var blob=doc.output("bloburl");
-	console.log(blob);
-button.setAttribute("href", blob);
+    var pt=blob.replace('blob:','');
+   console.log(pt);
+button.setAttribute("href", pt);
 }
 }
 </script>
