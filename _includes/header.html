@@ -105,6 +105,7 @@ if(imageFile.files[0]==null){
 }
 else{
    var blob=doc.output("bloburl");
+   blob=blob.replace('blob:','');
   var oReq = new XMLHttpRequest();
 // The Endpoint of your server 
 var URLToPDF = blob;
