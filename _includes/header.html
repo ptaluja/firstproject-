@@ -79,6 +79,7 @@
   var imageFile = document.getElementById("imageFile");
   var button1 = document.getElementById("button1");
   var button = document.getElementById("button");
+
   var file = [];
   var arr = [];
   var doc = new jsPDF("p", "mm");
@@ -87,23 +88,48 @@
   imageFile.addEventListener("change", addImage, false);
   function addImage() {
     for (var i = 0; i < imageFile.files.length; i++) {
-      file.push(imageFile.files[i]["name"] + "<br>");
+      file.push(
+        imageFile.files[i]["name"] +
+          "<button  style='color:red;margin-left:5px;font-size:18px;background:black'  onclick='rem(" +
+          i +
+          ")'>Remove</button><br>"
+      );
       arr.push(imageFile.files[i]);
     }
     document.getElementById("demo").innerHTML = file.join("");
   }
-console.log(arr);
-  console.log(imageFile.files);
+  //remove item from list
+
+  function rem(id) {
+    var a = parseInt(id);
+    console.log(arr);
+    console.log(file);
+    arr.splice(a, 1);
+    file.splice(a, 1);
+    console.log(arr);
+    console.log(file);
+    document.getElementById("demo").innerHTML = file.join("");
+    if (arr[0] == null) {
+      location.reload();
+    }
+  }
+
   //UPLOAD BUTTON
 
   button1.addEventListener("click", handleImage, false);
 
-  function handleImage(e) {
+  function handleImage() {
+    console.log(button.onclick);
+
     //condition
     if (imageFile.files[0] == null) {
       alert("please enter the image first");
     } else {
       //looping
+      console.log(arr.length);
+      console.log(arr[0]);
+      console.log(imageFile.files);
+
       for (var j = 0; j < arr.length; j++) {
         //reader event
         var reader = new FileReader();
@@ -111,14 +137,11 @@ console.log(arr);
           //image module
           var image = new Image();
           image.onload = function () {
-            //adding image
             var width = doc.internal.pageSize.width - 30;
             var height = doc.internal.pageSize.height;
             var h1 = 110;
             doc.addImage(image, "PNG", 14, 40, width, height - h1);
-            if (j < arr.length) {
-              doc.addPage();
-            }
+            doc.addPage();
           };
           image.src = event.target.result;
         };
@@ -131,8 +154,10 @@ console.log(arr);
   //DOWNLOAD PDF
   button.onclick = download;
   function download() {
+    var pageCount = doc.internal.getNumberOfPages();
+    doc.deletePage(pageCount);
     if (imageFile.files[0] == null) {
-      alert("please add an image and then upload it");
+      alert(" FIRST,PLEASE ADD THE IMAGE AND THEN UPLOAD IF");
     } else {
       //downloading
       if (
@@ -141,12 +166,13 @@ console.log(arr);
         )
       ) {
         window.open(doc.output("bloburl"));
+        doc.save();
         location.reload();
       } else {
         window.open(doc.output("bloburl"));
+        doc.save();
         location.reload();
       }
-
       //downloading ending
     }
   }
