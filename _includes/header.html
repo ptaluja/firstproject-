@@ -88,7 +88,7 @@
   function addImage() {
     for (var i = 0; i < imageFile.files.length; i++) {
       file.push(imageFile.files[i]["name"] + "<br>");
-      arr.push(file.files[i]);
+      arr.push(imageFile.files[i]);
     }
     document.getElementById("demo").innerHTML = file.join("");
   }
