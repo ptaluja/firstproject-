@@ -44,7 +44,9 @@
             </u>
             <br />
             <b>
-              <p id="demo" style="color: white; font-size: 20px"></p>
+              <p id="demo" style="color: white; font-size: 20px">
+                Count of the files will be shown here
+              </p>
             </b>
             <br />
             <input
@@ -88,30 +90,12 @@
   imageFile.addEventListener("change", addImage, false);
   function addImage() {
     for (var i = 0; i < imageFile.files.length; i++) {
-      file.push(
-        imageFile.files[i]["name"] +
-          "<button  style='color:red;margin-left:5px;font-size:18px;background:black'  onclick='rem(" +
-          i +
-          ")'>Remove</button><br>"
-      );
+      file.push(imageFile.files[i]["name"] + "<br>");
       arr.push(imageFile.files[i]);
     }
+    var n = 1;
     document.getElementById("demo").innerHTML = file.join("");
-  }
-  //remove item from list
-
-  function rem(id) {
-    var a = parseInt(id);
-    console.log(arr);
     console.log(file);
-    arr.splice(a, 1);
-    file.splice(a, 1);
-    console.log(arr);
-    console.log(file);
-    document.getElementById("demo").innerHTML = file.join("");
-    if (arr[0] == null) {
-      location.reload();
-    }
   }
 
   //UPLOAD BUTTON
@@ -123,7 +107,7 @@
 
     //condition
     if (imageFile.files[0] == null) {
-      alert("please enter the image first");
+      alert("PLEASE ENTER THE IMAGE FIRST");
     } else {
       //looping
       console.log(arr.length);
@@ -157,7 +141,7 @@
     var pageCount = doc.internal.getNumberOfPages();
     doc.deletePage(pageCount);
     if (imageFile.files[0] == null) {
-      alert(" FIRST,PLEASE ADD THE IMAGE AND THEN UPLOAD IF");
+      alert(" FIRST,PLEASE ADD THE IMAGE AND THEN UPLOAD IT");
     } else {
       //downloading
       if (
